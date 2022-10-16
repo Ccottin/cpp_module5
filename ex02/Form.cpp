@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/15 01:24:41 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/16 04:04:16 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,21 @@
 #include <string>
 #include <iostream>
 
-Form::Form(void) :	_name("Default"), _signed(false),
-					_gradeToSign(150), _gradeToExecute(150)
+AForm::AForm(void) : _name("Default"), _target("target"),
+					_signed(false), _gradeToSign(150),
+					_gradeToExecute(150)
 {
 	std::cout << "Form " << _name << " got created" 
 	<< std::endl;
 }
 
-Form::Form(std::string const name, int const gradeToSign,
-			int const gradeToExecute) : _name(name),
-					_signed(false),
+AForm::AForm(std::string const name,
+				std::string const target,
+				bool form,
+				int const gradeToSign,
+				int const gradeToExecute) : _name(name),
+					_target(target),
+					_signed(form),
 					_gradeToSign(gradeToSign),
 					_gradeToExecute(gradeToExecute)
 {
@@ -35,7 +40,8 @@ Form::Form(std::string const name, int const gradeToSign,
 	<< std::endl;
 }
 
-Form::Form(Form const &ref) : _name(ref.getName()),
+AForm::AForm(AForm const &ref) : _name(ref.getName()),
+						_target(ref.getTarget()),
 						_signed(ref.getForm()),
 						_gradeToSign(ref.getToSign()),
 						_gradeToExecute(ref.getToExecute())
@@ -45,7 +51,7 @@ Form::Form(Form const &ref) : _name(ref.getName()),
 	<< std::endl;
 }
 
-Form::~Form(void)
+AForm::~AForm(void)
 {
 	std::cout << "Form " << _name << " went to trash"
 	<< std::endl;
@@ -53,7 +59,7 @@ Form::~Form(void)
 
 /* Operators Overload */
 
-Form 	&Form::operator=(Form const &ref)
+AForm 	&AForm::operator=(AForm const &ref)
 {
 	if (this != &ref)
 		this->_signed = ref.getForm();
@@ -63,9 +69,10 @@ Form 	&Form::operator=(Form const &ref)
 }
 
 std::ostream	&operator<<(std::ostream &stream,
-		Form const &ref)
+		AForm const &ref)
 {
-	stream << ref.getName() << " : form needs a bureaucrat "
+	stream << ref.getName() << " : form with "
+	<< ref.getTarget() << " target needs a bureaucrat "
 	"grade "  << ref.getToSign() << " to be signed or "
 	<< ref.getToExecute() << " to be executed and is currently";
 	if (ref.getForm() == true)
@@ -77,29 +84,38 @@ std::ostream	&operator<<(std::ostream &stream,
 
 /* Accessors */
 
-std::string const	Form::getName(void) const
+std::string const	&AForm::getName(void) const
 {
 	return (_name);
 }
 
-bool				Form::getForm(void) const
+std::string	const	&AForm::getTarget(void) const
+{
+	return (_target);
+}
+bool				AForm::getForm(void) const
 {
 	return (_signed);
 }
 
-int					Form::getToSign(void) const
+int					AForm::getToSign(void) const
 {
 	return (_gradeToSign);
 }
 
-int					Form::getToExecute(void) const
+int					AForm::getToExecute(void) const
 {
 	return (_gradeToExecute);
 }
 
+void				AForm::setForm(const bool b)
+{
+	this->_signed = b;
+}
+
 /* Member fonctions */
 
-void				Form::beSigned(Bureaucrat const &b)
+void				AForm::beSigned(Bureaucrat const &b)
 {
 	if (_signed == true)
 		throw AlreadySignedException();

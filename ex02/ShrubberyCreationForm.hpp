@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 05:53:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/15 05:21:58 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/16 07:31:03 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,19 @@
 
 # include "Form.hpp"
 
-class ShrubberyCreationForm: public Form {
+class ShrubberyCreationForm: public AForm {
 
 	public :
 
 		ShrubberyCreationForm(void);
+		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(ShrubberyCreationForm const &ref);
 		ShrubberyCreationForm &operator=(ShrubberyCreationForm
 			const &ref);
 		virtual ~ShrubberyCreationForm(void);
+		
+		virtual void	execute(Bureaucrat const & executor) const;
 
-		void	plantAscii(std::name target);
+};
 
 #endif

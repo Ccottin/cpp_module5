@@ -6,14 +6,15 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:57:36 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/15 01:25:52 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/16 07:27:30 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
-
+#include "ShrubberyCreationForm.hpp"
+/*
 void	test2(void)
 {
 	Bureaucrat	a = Bureaucrat("Alfred");
@@ -61,7 +62,7 @@ void	test1(void)
 	Bureaucrat	b("Jean", 42);
 	Bureaucrat	c("Jaques", 1);
 
-	Form		aa;
+	ShrubberyCreationForm	aa;
 	
 	std::cout << aa << std::endl;
 	
@@ -95,34 +96,46 @@ void	test1(void)
 		std::cout << e.what() << std::endl;
 		c.signForm(aa.getName(), e.what());
 	}
-
 	std::cout << aa << std::endl;
-}
+	std::cout << std::endl;
+	try
+	{
+		aa.execute(a);
+	//	a.signForm(aa.getName());
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	//	a.signForm(aa.getName(), e.what());
+	}
+	try
+	{
+		aa.execute(b);
+	//	b.signForm(aa.getName());
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	//	b.signForm(aa.getName(), e.what());
+	}
+	try
+	{
+		aa.execute(c);
+	//	c.signForm(aa.getName());
+	}	
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	//	c.signForm(aa.getName(), e.what());
+	}
+
+}*/
 
 int	main(void)
 {
-	test1();
+//	test1();
 	std::cout << std::endl;
-	test2();
+//	test2();
 	std::cout << std::endl;
-	{
-		try
-		{
-			Form	form("a", 7894, -456);
-		}
-		catch (std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
-		std::cout << std::endl;
-		try
-		{
-			Form	formm("a", 1, -456);
-		}
-		catch (std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
-	}
 	return (0);
 }

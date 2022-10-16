@@ -6,16 +6,19 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:25 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/14 05:14:41 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/16 07:29:11 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
+# include "Form.hpp"
 # include <string>
 # include <iostream>
 # include <exception>
+
+class	AForm;
 
 class	Bureaucrat {
 
@@ -38,10 +41,9 @@ class	Bureaucrat {
 		
 		void				incrementGrade(int const i);
 		void				decrementGrade(int const i);
-		void				signForm(std::string const name);
-		void				signForm(std::string const name,
-								std::string const reason);
-
+		void				signForm(AForm const & form) const;
+		void				executeForm(AForm const & form) const;
+			
 	/* Exceptions */
 
 	class	GradeTooHighException : public std::exception

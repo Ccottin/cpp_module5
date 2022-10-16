@@ -6,50 +6,87 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 05:53:48 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/15 06:11:23 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/16 05:47:28 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.cpp"
+#include <fstream>
+#include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(void) :
-	Form("Default", false, 145, 137)
+	AForm("ShrubberyCreationForm", "Target", false, 145, 137)
 {
-	std::cout << "ShrubberyCreationForm " << _name
-	<< " created" << std::endl;
+	std::cout << getName() << " created" << std::endl;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
+	AForm("ShrubberyCreationForm", target, false, 145, 137)
+{
+	std::cout << getName() << " created" << std::endl;
 }
 
 ShrubberyCreationForm::
 ShrubberyCreationForm(ShrubberyCreationForm const &ref) :
-	Form("Default", false, 145, 137)
+	AForm(ref.getName(), ref.getTarget(), false, 145, 137)
 {
-	std::cout << "ShrubberyCreationForm " << _name
+	std::cout << "ShrubberyCreationForm " << ref.getName()
 	<< " created with a photocopier" << std::endl;
-	this = &ref;
+	*this = ref;
 }
-ShrubberyCreationForm::
-ShrubberyCreationForm &operator=(ShrubberyCreationForm
+
+ShrubberyCreationForm
+&ShrubberyCreationForm::operator=(ShrubberyCreationForm
 			const &ref)
 {
+	std::cout << "ShrubberyCreationForm " << ref.getName()
+	<< " calls copy operator" << std::endl;
 	if (this != &ref)
-		this->_signed = ref.getForm();
+		this->setForm(ref.getForm());
+	return (*this);
 }
 ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
-	"Trees from " << _name << " form got harvested" << std::endl;
+	std::cout << "Trees from " << getName() << " form got harvested" << std::endl;
 }
 
-void	plantAscii(std::name target);
+void	ShrubberyCreationForm::execute
+			(Bureaucrat const & executor) const
 {
 	std::ofstream	file;
-	std::string		name = target + "_shrubbery";
+	std::string		name = getTarget() + "_shrubbery";
 
+	if (this->getForm() != true)
+		throw NotSignedException();
+	if (executor.getGrade() > this->getToExecute())
+		throw GradeTooLowException();
 	try
 	{
 		file.open(name.c_str());
-		file.write
+		file.write("\n                    / / /\n"
+"                   /        /  /     / /   /\n"
+"                /                 /         /  /\n"
+"                                /\n"
+"                               /               / /\n"
+"               /          /            /              /\n"
+"               /            '/,        /               /\n"
+"               /              'b      *\n"
+"                /              '$    / /              / /\n"
+"               /    /           $:   /:               /\n"
+"            / /      / / /      * /  @):       /   / /\n"
+"                          /     :@,@):   ,/**:'   /\n"
+"              /      /,         :@@*: / /**'     /   /\n"
+"                       '/o/    /:(@'/@**'''  /\n"
+"               /  /       'bq, /:,@@*'   ,*      /  /\n"
+"                          ,p$q8,:@)'  /p*'      /\n"
+"                   /     '  / '@@Pp@@*'    /  /\n"
+"                    /  / / /   Y7'.'     /  /\n"
+"                              :@):.\n"
+"                             .:@:'.\n"
+"                           .::(@:. \n"
+"                         .::::(@:. \n", 1024);
+		file.close();
 	}
-	catch (std::exection &e)
+	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
