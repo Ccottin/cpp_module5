@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:25 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/14 05:14:41 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/17 01:53:30 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <string>
 # include <iostream>
 # include <exception>
+# include "Form.hpp"
+
+class	Form;
 
 class	Bureaucrat {
 
@@ -38,9 +41,7 @@ class	Bureaucrat {
 		
 		void				incrementGrade(int const i);
 		void				decrementGrade(int const i);
-		void				signForm(std::string const name);
-		void				signForm(std::string const name,
-								std::string const reason);
+		void				signForm(Form & form) const;
 
 	/* Exceptions */
 

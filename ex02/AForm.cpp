@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/16 04:04:16 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/17 02:14:16 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <string>
 #include <iostream>
 
@@ -18,8 +18,8 @@ AForm::AForm(void) : _name("Default"), _target("target"),
 					_signed(false), _gradeToSign(150),
 					_gradeToExecute(150)
 {
-	std::cout << "Form " << _name << " got created" 
-	<< std::endl;
+	std::cout << "Form " << _name << " got created "
+	"(Form default constructor)" << std::endl;
 }
 
 AForm::AForm(std::string const name,
@@ -36,8 +36,8 @@ AForm::AForm(std::string const name,
 		throw	GradeTooLowException();
 	if (gradeToSign < 1 || gradeToExecute < 1)
 		throw	GradeTooHighException();
-	std::cout << "Form " << _name << " got created"
-	<< std::endl;
+	std::cout << "Form " << _name << " got created "
+	"(Form constructor)" << std::endl;
 }
 
 AForm::AForm(AForm const &ref) : _name(ref.getName()),
@@ -115,7 +115,7 @@ void				AForm::setForm(const bool b)
 
 /* Member fonctions */
 
-void				AForm::beSigned(Bureaucrat const &b)
+void				AForm::beSigned(Bureaucrat const &b) 
 {
 	if (_signed == true)
 		throw AlreadySignedException();

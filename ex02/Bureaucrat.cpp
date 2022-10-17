@@ -6,12 +6,12 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/16 07:30:29 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/17 02:15:57 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <string>
 #include <iostream>
 
@@ -131,11 +131,13 @@ void			Bureaucrat::decrementGrade(int const i)
 
 }
 
-void			Bureaucrat::signForm(AForm const & form) const
+void			Bureaucrat::signForm(AForm & form) const
 {
 	try
 	{
-		form.beSigned((Bureaucrat const)*this);
+		form.beSigned(*this);
+		std::cout << getName() << " signed "
+		<< form.getName() << std::endl;
 	}
 	catch (std::exception &e)
 	{
@@ -143,15 +145,16 @@ void			Bureaucrat::signForm(AForm const & form) const
 		<< form.getName() << " because " << e.what()
 		<< std::endl;
 	}
-	std::cout << getName() << " signed " << form.getName();
 
 }
 
-void			Bureaucrat::executeForm(AForm const & form) const
+void			Bureaucrat::executeForm(AForm const & form)
 {
 	try
 	{
-		form.execute(this);
+		form.execute(*this);
+		std::cout << getName() << " executed " << form.getName()
+		<< std::endl;
 	}
 	catch (std::exception &e)
 	{
@@ -159,5 +162,4 @@ void			Bureaucrat::executeForm(AForm const & form) const
 		<< form.getName() << " because " << e.what()
 		<< std::endl;
 	}
-	std::cout << getName() << " executed " << form.getName();
 }

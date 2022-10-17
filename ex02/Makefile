@@ -6,13 +6,13 @@
 #    By: ccottin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/03 12:16:24 by ccottin           #+#    #+#              #
-#    Updated: 2022/10/16 07:31:33 by ccottin          ###   ########.fr        #
+#    Updated: 2022/10/17 02:35:10 by ccottin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	BureaucratsWithSpecificsForms
 
-SRCS	=	Bureaucrat.cpp main.cpp Form.cpp ShrubberyCreationForm.cpp
+SRCS	=	Bureaucrat.cpp main.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
 
 CC		= c++
 

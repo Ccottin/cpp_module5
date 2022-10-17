@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:57:36 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/15 01:25:52 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/17 02:08:47 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,33 +24,38 @@ void	test2(void)
 	
 	try
 	{
+		std::cout << a.getName() << " try to sign form "
+		<< bb.getName() << std::endl;
 		bb.beSigned(a);
-		a.signForm(bb.getName());
+		std::cout << "Success!" << std::endl;
+		
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
-		a.signForm(bb.getName(), e.what());
-	}
-	tr
-	{
-		bb.beSigned(b);
-		b.signForm(bb.getName());
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-		b.signForm(bb.getName(), e.what());
 	}
 	try
 	{
+		std::cout << b.getName() << " try to sign form "
+		<< bb.getName() << std::endl;
+		bb.beSigned(b);
+		std::cout << "Success!" << std::endl;
+
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
+		std::cout << c.getName() << " try to sign form "
+		<< bb.getName() << std::endl;
 		bb.beSigned(c);
-		c.signForm(bb.getName());
+		std::cout << "Success!" << std::endl;
 	}	
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
-		c.signForm(bb.getName(), e.what());
 	}
 
 }
@@ -61,41 +66,14 @@ void	test1(void)
 	Bureaucrat	b("Jean", 42);
 	Bureaucrat	c("Jaques", 1);
 
-	Form		aa;
+	Form		aa("curvyForm", 43, 42);
 	
 	std::cout << aa << std::endl;
 	
-	try
-	{
-		aa.beSigned(a);
-		a.signForm(aa.getName());
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-		a.signForm(aa.getName(), e.what());
-	}
-	try
-	{
-		aa.beSigned(b);
-		b.signForm(aa.getName());
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-		b.signForm(aa.getName(), e.what());
-	}
-	try
-	{
-		aa.beSigned(c);
-		c.signForm(aa.getName());
-	}	
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-		c.signForm(aa.getName(), e.what());
-	}
-
+	a.signForm(aa);
+	b.signForm(aa);
+	c.signForm(aa);
+	
 	std::cout << aa << std::endl;
 }
 

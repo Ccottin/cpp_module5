@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:25 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/15 00:10:31 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/17 02:01:09 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <iostream>
 # include <exception>
 # include "Bureaucrat.hpp"
+
+class	Bureaucrat;
 
 class	Form {
 

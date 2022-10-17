@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/14 05:14:15 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/17 02:01:42 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,14 +130,20 @@ void			Bureaucrat::decrementGrade(int const i)
 
 }
 
-void			Bureaucrat::signForm(std::string const name)
+void			Bureaucrat::signForm(Form & form) const
 {
-	std::cout << _name << " signed " << name << std::endl;
+	try
+	{
+		form.beSigned(*this);
+		std::cout << getName() << " signed "
+		<< form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << getName() << " couldn't sign "
+		<< form.getName() << " because " << e.what()
+		<< std::endl;
+	}
+
 }
 
-void			Bureaucrat::signForm(std::string const name,
-					std::string const reason)
-{
-	std::cout << _name << " couldn't sign " << name
-	<< " because " << reason << std::endl;
-}

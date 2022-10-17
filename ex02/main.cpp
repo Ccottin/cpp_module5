@@ -6,54 +6,55 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:57:36 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/16 07:27:30 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/17 02:34:25 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-/*
+#include "RobotomyRequestForm.hpp"
+
+/*	this test battery is good to go for all forms type, just	*/
+/*	change every occurences to another							*/
+
 void	test2(void)
 {
 	Bureaucrat	a = Bureaucrat("Alfred");
 	Bureaucrat	b("Jean", 42);
 	Bureaucrat	c("Jaques", 1);
 
-	Form		bb("LaisserPasserA38", 42, 6);
+	RobotomyRequestForm	aa;
 	
-	try
-	{
-		bb.beSigned(a);
-		a.signForm(bb.getName());
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-		a.signForm(bb.getName(), e.what());
-	}
-	tr
-	{
-		bb.beSigned(b);
-		b.signForm(bb.getName());
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-		b.signForm(bb.getName(), e.what());
-	}
-	try
-	{
-		bb.beSigned(c);
-		c.signForm(bb.getName());
-	}	
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-		c.signForm(bb.getName(), e.what());
-	}
-
+	std::cout << aa << std::endl;
+	
+	std::cout << a.getName() << " try to sign form "
+	<< aa.getName() << std::endl;
+	a.signForm(aa);
+		
+	std::cout << b.getName() << " try to sign form "
+	<< aa.getName() << std::endl;
+	b.signForm(aa);
+	
+	std::cout << c.getName() << " try to sign form "
+	<< aa.getName() << std::endl;
+	c.signForm(aa);
+	
+	std::cout << std::endl;
+	std::cout << aa << std::endl;
+		
+	std::cout << a.getName() << " try to execute form "
+	<< aa.getName() << std::endl;
+	a.executeForm(aa);
+	
+	std::cout << b.getName() << " try to execute form "
+	<< aa.getName() << std::endl;
+	b.executeForm(aa);
+		
+	std::cout << c.getName() << " try to execute form "
+	<< aa.getName() << std::endl;
+	c.executeForm(aa);
 }
 
 void	test1(void)
@@ -62,80 +63,108 @@ void	test1(void)
 	Bureaucrat	b("Jean", 42);
 	Bureaucrat	c("Jaques", 1);
 
-	ShrubberyCreationForm	aa;
+	RobotomyRequestForm	aa;
 	
 	std::cout << aa << std::endl;
 	
 	try
 	{
+		std::cout << a.getName() << " try to sign form "
+		<< aa.getName() << std::endl;
 		aa.beSigned(a);
-		a.signForm(aa.getName());
+		std::cout << "Success!" << std::endl;
+		
 	}
 	catch (std::exception &e)
 	{
+		
 		std::cout << e.what() << std::endl;
-		a.signForm(aa.getName(), e.what());
 	}
 	try
 	{
+		std::cout << b.getName() << " try to sign form "
+		<< aa.getName() << std::endl;
 		aa.beSigned(b);
-		b.signForm(aa.getName());
+		std::cout << "Success!" << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
-		b.signForm(aa.getName(), e.what());
 	}
 	try
 	{
+		std::cout << c.getName() << " try to sign form "
+		<< aa.getName() << std::endl;
 		aa.beSigned(c);
-		c.signForm(aa.getName());
+		std::cout << "Success!" << std::endl;
 	}	
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
-		c.signForm(aa.getName(), e.what());
 	}
+	std::cout << std::endl;
 	std::cout << aa << std::endl;
 	std::cout << std::endl;
 	try
 	{
+		std::cout << a.getName() << " try to execute form "
+		<< aa.getName() << std::endl;
 		aa.execute(a);
-	//	a.signForm(aa.getName());
+		std::cout << "Success!" << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
-	//	a.signForm(aa.getName(), e.what());
 	}
 	try
 	{
+		std::cout << b.getName() << " try to execute form "
+		<< aa.getName() << std::endl;
 		aa.execute(b);
-	//	b.signForm(aa.getName());
+		std::cout << "Success!" << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
-	//	b.signForm(aa.getName(), e.what());
 	}
 	try
 	{
+		std::cout << c.getName() << " try to execute form "
+		<< aa.getName() << std::endl;
 		aa.execute(c);
-	//	c.signForm(aa.getName());
+		std::cout << "Success!" << std::endl;
 	}	
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
-	//	c.signForm(aa.getName(), e.what());
 	}
 
-}*/
+}
 
 int	main(void)
 {
-//	test1();
+	{
+		Bureaucrat a("Bureacrat", 138);
+		RobotomyRequestForm casic("cible");
+
+		try
+		{
+			casic.execute(a);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		a.executeForm(casic);
+	}
 	std::cout << std::endl;
-//	test2();
+	std::cout << std::endl;
+	test1();
+	std::cout << std::endl;
+	std::cout << "Now testing with Bureaucrats'"
+	" functions" << std::endl;
+	std::cout << std::endl;
+	test2();
 	std::cout << std::endl;
 	return (0);
 }
