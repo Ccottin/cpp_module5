@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:57:36 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/17 02:34:25 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/18 00:02:17 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 /*	this test battery is good to go for all forms type, just	*/
 /*	change every occurences to another							*/
@@ -25,7 +25,7 @@ void	test2(void)
 	Bureaucrat	b("Jean", 42);
 	Bureaucrat	c("Jaques", 1);
 
-	RobotomyRequestForm	aa;
+	PresidentialPardonForm	aa;
 	
 	std::cout << aa << std::endl;
 	
@@ -63,7 +63,7 @@ void	test1(void)
 	Bureaucrat	b("Jean", 42);
 	Bureaucrat	c("Jaques", 1);
 
-	RobotomyRequestForm	aa;
+	PresidentialPardonForm	aa;
 	
 	std::cout << aa << std::endl;
 	
@@ -145,7 +145,7 @@ int	main(void)
 {
 	{
 		Bureaucrat a("Bureacrat", 138);
-		RobotomyRequestForm casic("cible");
+		PresidentialPardonForm casic("cible");
 
 		try
 		{

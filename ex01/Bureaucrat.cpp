@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/17 02:01:42 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/18 02:11:55 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,20 @@ Bureaucrat	&Bureaucrat::operator--(void)
 	else
 		(this->_grade)++;
 	return (*this);
+}
+
+/* Exceptions */
+
+const char * Bureaucrat::GradeTooHighException::what() const
+				throw()
+{
+	return ("Bureaucrat's grade is too high");
+}
+
+const char * Bureaucrat::GradeTooLowException::what() const
+				throw()
+{
+	return ("Bureaucrat's grade is too low");
 }
 
 /* Accessors */

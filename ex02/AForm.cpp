@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/17 02:14:16 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/18 02:20:23 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,28 @@ int					AForm::getToExecute(void) const
 void				AForm::setForm(const bool b)
 {
 	this->_signed = b;
+}
+
+/* Exceptions */
+
+const char * AForm::GradeTooHighException::what() const throw()
+{
+	return ("Form's grade is too high");
+}
+
+const char * AForm::GradeTooLowException::what() const throw()
+{
+	return ("Form's grade is too low");
+}
+
+const char * AForm::AlreadySignedException::what() const throw()
+{
+	return ("Form is already signed");
+}
+
+const char * AForm::NotSignedException::what() const throw()
+{
+	return ("Unsigned forms cannot be executed"); 
 }
 
 /* Member fonctions */

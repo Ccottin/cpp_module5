@@ -6,11 +6,12 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/18 02:10:03 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/18 02:09:39 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 #include <string>
 #include <iostream>
 
@@ -98,12 +99,12 @@ std::string const	Bureaucrat::getName(void) const
 	return (_name);
 }
 
-int			Bureaucrat::getGrade(void) const
+int					Bureaucrat::getGrade(void) const
 {
 	return (_grade);
 }
 
-void			Bureaucrat::setGrade(int const i)
+void				Bureaucrat::setGrade(int const i)
 {
 	if (i > _Lowest)
 		throw GradeTooLowException();
@@ -113,7 +114,7 @@ void			Bureaucrat::setGrade(int const i)
 		_grade = i;
 }
 
-/* Exceptions */
+/*	Exceptions	*/
 
 const char * Bureaucrat::GradeTooHighException::what() const 
 				throw()
@@ -142,4 +143,37 @@ void			Bureaucrat::decrementGrade(int const i)
 		throw GradeTooLowException();
 	_grade += i;
 
+}
+
+void			Bureaucrat::signForm(AForm & form) const
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << getName() << " signed "
+		<< form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << getName() << " couldn't sign "
+		<< form.getName() << " because " << e.what()
+		<< std::endl;
+	}
+
+}
+
+void			Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << getName() << " executed " << form.getName()
+		<< std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << getName() << " couldn't execute "
+		<< form.getName() << " because " << e.what()
+		<< std::endl;
+	}
 }
