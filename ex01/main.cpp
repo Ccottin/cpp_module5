@@ -6,13 +6,24 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:57:36 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/17 02:08:47 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 04:33:26 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+
+void	test3(void)
+{
+	Bureaucrat	g("Gerard", 24);
+	Form		form("Another", 23, 1);
+
+	(++g).signForm(form);
+	++g;
+	g.signForm(form);
+	
+}
 
 void	test2(void)
 {
@@ -79,8 +90,15 @@ void	test1(void)
 
 int	main(void)
 {
+	
+	std::cout << "Test with Bureaucrats' functions : "
+	"TryCatch is already implemented inside, so it is"
+	"just a print" << std::endl;
 	test1();
 	std::cout << std::endl;
+	std::cout << "Test with Forms' functions : they all"
+	" throw an exeption so we'll need to TryCatch them"
+	<< std::endl;
 	test2();
 	std::cout << std::endl;
 	{
@@ -102,5 +120,6 @@ int	main(void)
 			std::cout << e.what() << std::endl;
 		}
 	}
+	test3();	
 	return (0);
 }

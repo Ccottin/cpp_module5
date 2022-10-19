@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:25 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/18 02:21:08 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 05:31:31 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ class	Bureaucrat {
 
 	class	GradeTooHighException : public std::exception
 	{
-		public :
+	//	public :
 			virtual const char * what() const throw();
 	};
 

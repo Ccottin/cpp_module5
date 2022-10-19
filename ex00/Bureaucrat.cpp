@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/18 02:10:03 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 02:42:01 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Bureaucrat::Bureaucrat(std::string const name, int const grade)
 	"for him" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &ref)
+Bureaucrat::Bureaucrat(Bureaucrat const &ref) : _name(ref.getName())
 {
 	*this = ref;
 	std::cout << "Bureaucrat " << _name << " got a copy of"
@@ -59,7 +59,7 @@ Bureaucrat::~Bureaucrat(void)
 Bureaucrat 	&Bureaucrat::operator=(Bureaucrat const &ref)
 {
 	if (this != &ref)
-		this->_grade = ref.getGrade();
+		this->_setGrade(ref.getGrade());
 	std::cout << "Bureaucrat " << _name << " constructs"
 	" a copy of himself" << std::endl;
 	return (*this);
@@ -98,12 +98,12 @@ std::string const	Bureaucrat::getName(void) const
 	return (_name);
 }
 
-int			Bureaucrat::getGrade(void) const
+int					Bureaucrat::getGrade(void) const
 {
 	return (_grade);
 }
 
-void			Bureaucrat::setGrade(int const i)
+void				Bureaucrat::_setGrade(int const i)
 {
 	if (i > _Lowest)
 		throw GradeTooLowException();
@@ -115,14 +115,12 @@ void			Bureaucrat::setGrade(int const i)
 
 /* Exceptions */
 
-const char * Bureaucrat::GradeTooHighException::what() const 
-				throw()
+const char * Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Bureaucrat's grade is too high");
 }
 
-const char * Bureaucrat::GradeTooLowException::what() const 
-				throw()
+const char * Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Bureaucrat's grade is too low");
 }
@@ -133,13 +131,13 @@ void			Bureaucrat::incrementGrade(int const i)
 {
 	if (_grade - i < _Highest)
 		throw GradeTooHighException();
-	_grade -= i;
+	_setGrade(_grade - i);
 }
 
 void			Bureaucrat::decrementGrade(int const i)
 {
-	if (i > _Lowest)
+	if (_grade + i > _Lowest)
 		throw GradeTooLowException();
-	_grade += i;
+	_setGrade(_grade + i);
 
 }

@@ -6,7 +6,7 @@
 #    By: ccottin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/03 12:16:24 by ccottin           #+#    #+#              #
-#    Updated: 2022/10/14 00:12:48 by ccottin          ###   ########.fr        #
+#    Updated: 2022/10/19 02:53:48 by ccottin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,17 +18,20 @@ CC	= c++
 
 OBJS	= $(SRCS:.cpp=.o)
 
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -g3
+DEPS	= $(OBJS:.o=.d)
+
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -g3 -MMD
 
 all	:	$(NAME)
 
 %.o	:	%.cpp
-		$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+		$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME)	:	$(OBJS)
-		$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $@
+			$(CC) $(CFLAGS) $(OBJS) -o $@
 
 clean	:
+		rm -rf $(DEPS)
 		rm -rf $(OBJS)
 
 fclean	:	clean
@@ -36,5 +39,7 @@ fclean	:	clean
 
 re	:	fclean
 		make
+
+-include $(DEPS)
 
 .PHONY	:	all fclean clean re

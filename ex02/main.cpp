@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:57:36 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/18 00:02:17 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 05:42:44 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,8 @@ void	test1(void)
 int	main(void)
 {
 	{
-		Bureaucrat a("Bureacrat", 138);
+
+		Bureaucrat a("Bureacrat", 142);
 		PresidentialPardonForm casic("cible");
 
 		try
@@ -163,7 +164,6 @@ int	main(void)
 	std::cout << std::endl;
 	std::cout << "Now testing with Bureaucrats'"
 	" functions" << std::endl;
-	std::cout << std::endl;
 	test2();
 	std::cout << std::endl;
 	return (0);

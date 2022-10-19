@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/18 02:11:55 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 04:05:59 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ Bureaucrat::~Bureaucrat(void)
 Bureaucrat 	&Bureaucrat::operator=(Bureaucrat const &ref)
 {
 	if (this != &ref)
-		this->_grade = ref.getGrade();
+		this->_setGrade(ref.getGrade());
 	std::cout << "Bureaucrat " << _name << " constructs"
 	" a copy of himself" << std::endl;
 	return (*this);
@@ -117,7 +117,7 @@ int			Bureaucrat::getGrade(void) const
 	return (_grade);
 }
 
-void			Bureaucrat::setGrade(int const i)
+void			Bureaucrat::_setGrade(int const i)
 {
 	if (i > _Lowest)
 		throw GradeTooLowException();
@@ -138,7 +138,7 @@ void			Bureaucrat::incrementGrade(int const i)
 
 void			Bureaucrat::decrementGrade(int const i)
 {
-	if (i > _Lowest)
+	if (_grade + i > _Lowest)
 		throw GradeTooLowException();
 	_grade += i;
 

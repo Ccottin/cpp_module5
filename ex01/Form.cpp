@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/18 02:15:21 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 04:22:08 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ Form::Form(std::string const name, int const gradeToSign,
 					_gradeToExecute(gradeToExecute)
 {
 	if (gradeToSign > 150 || gradeToExecute > 150)
-		throw	GradeTooLowException();
+		throw GradeTooLowException();
 	if (gradeToSign < 1 || gradeToExecute < 1)
-		throw	GradeTooHighException();
+		throw GradeTooHighException();
 	std::cout << "Form " << _name << " got created"
 	<< std::endl;
 }
@@ -40,7 +40,7 @@ Form::Form(Form const &ref) : _name(ref.getName()),
 						_gradeToSign(ref.getToSign()),
 						_gradeToExecute(ref.getToExecute())
 {
-	*this = ref;
+//	*this = ref;
 	std::cout << "Form " << _name << " got created again"
 	<< std::endl;
 }
@@ -106,7 +106,7 @@ const char * Form::GradeTooHighException::what() const throw()
 
 const char * Form::GradeTooLowException::what() const throw()
 {
-	return ("Form's grade is too low");
+	return ("Form's or else's grade is too low");
 }
 
 const char * Form::AlreadySignedException::what() const throw()
