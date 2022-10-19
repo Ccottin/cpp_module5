@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/18 05:36:47 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/20 00:50:04 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <string>
@@ -28,7 +28,7 @@ Intern::Intern(Intern const &ref)
 	"and nobody cares" << std::endl;
 }
 
-Intern 	&Intern::operator=(Intern const &ref) //operator seems to not work..
+Intern 	&Intern::operator=(Intern const &ref) 
 {
 	(void)ref;
 	std::cout << "Intern constructs a copy of himself"
@@ -91,7 +91,7 @@ AForm	*Intern::makeForm(std::string name, std::string target) const
 /* an exeption is thrown here event if its not asked in subject, */
 /* as you will need to try/catch this fonction anyway for malloc */
 /* safety. If you considers this as incorrect, please accept     */
-/* this piece of code instead line 84 :							 */
+/* this piece of code instead line 86 :							 */
 /* 		default :												 */
 /*			std::cout << Form name is not valid << std::endl;	 */
 /*			return (NULL);										 */

@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 05:53:48 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/17 02:23:18 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 21:59:39 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
 
 ShrubberyCreationForm::
 ShrubberyCreationForm(ShrubberyCreationForm const &ref) :
-	AForm(ref.getName(), ref.getTarget(), false, 145, 137)
+	AForm(ref.getName(), ref.getTarget(),  ref.getForm(), 145, 137)
 {
 	std::cout << "ShrubberyCreationForm " << ref.getName()
 	<< " created with a photocopier" << std::endl;
-	*this = ref;
 }
 
 ShrubberyCreationForm

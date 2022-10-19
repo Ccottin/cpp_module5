@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:25 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/18 02:03:26 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 23:05:15 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ class	Intern {
 		/* Exceptions */
 
 	class	WrongNameException : public std::exception
-	{
-		public :
-			virtual const char * what() const throw();
-	};
+	{ virtual const char * what() const throw(); };
 
 	protected :
 

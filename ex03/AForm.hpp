@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:25 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/18 04:35:52 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 22:02:54 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,16 @@ class	AForm {
 	/* Exceptions */
 
 	class	GradeTooHighException : public std::exception
-	{
-		public :
-			virtual const char * what() const throw();
-	};
+	{ virtual const char * what() const throw(); };
 
 	class	GradeTooLowException : public std::exception
-	{
-		public :
-			virtual const char * what() const throw();
-	};
+	{ virtual const char * what() const throw(); };
 
 	class	AlreadySignedException : public std::exception
-	{
-		public :
-			virtual const char * what() const throw();
-	};
+	{ virtual const char * what() const throw(); };
 
 	class NotSignedException : public std::exception 
-	{
-		public :
-			virtual const char *what() const throw();
-	};
+	{ virtual const char *what() const throw(); };
 
 
 	protected :

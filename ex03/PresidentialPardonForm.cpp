@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 05:53:48 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/17 23:54:58 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 22:08:08 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) :
 
 PresidentialPardonForm::
 PresidentialPardonForm(PresidentialPardonForm const &ref) :
-	AForm(ref.getName(), ref.getTarget(), false, 25, 5)
+	AForm(ref.getName(), ref.getTarget(), ref.getForm(), 25, 5)
 {
 	std::cout << "PresidentialPardonForm " << ref.getName()
 	<< " created with a photocopier" << std::endl;
-	*this = ref;
 }
 
 PresidentialPardonForm

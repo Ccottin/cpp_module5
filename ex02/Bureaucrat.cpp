@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/18 02:21:51 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 21:48:35 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Bureaucrat::Bureaucrat(std::string const name, int const grade)
 	"for him" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &ref)
+Bureaucrat::Bureaucrat(Bureaucrat const &ref) : _name(ref.getName())
 {
 	*this = ref;
 	std::cout << "Bureaucrat " << _name << " got a copy of"
@@ -60,7 +60,7 @@ Bureaucrat::~Bureaucrat(void)
 Bureaucrat 	&Bureaucrat::operator=(Bureaucrat const &ref)
 {
 	if (this != &ref)
-		this->_grade = ref.getGrade();
+		this->_setGrade(ref.getGrade());
 	std::cout << "Bureaucrat " << _name << " constructs"
 	" a copy of himself" << std::endl;
 	return (*this);
@@ -104,7 +104,7 @@ int					Bureaucrat::getGrade(void) const
 	return (_grade);
 }
 
-void				Bureaucrat::setGrade(int const i)
+void				Bureaucrat::_setGrade(int const i)
 {
 	if (i > _Lowest)
 		throw GradeTooLowException();
@@ -131,14 +131,14 @@ void			Bureaucrat::incrementGrade(int const i)
 {
 	if (_grade - i < _Highest)
 		throw GradeTooHighException();
-	_grade -= i;
+	_setGrade(_grade - i);
 }
 
 void			Bureaucrat::decrementGrade(int const i)
 {
-	if (i > _Lowest)
+	if (_grade + i > _Lowest)
 		throw GradeTooLowException();
-	_grade += i;
+	_setGrade(_grade + i);
 
 }
 

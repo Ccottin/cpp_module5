@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/18 02:20:23 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 22:00:09 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ AForm::AForm(AForm const &ref) : _name(ref.getName()),
 						_gradeToSign(ref.getToSign()),
 						_gradeToExecute(ref.getToExecute())
 {
-	*this = ref;
 	std::cout << "Form " << _name << " got created again"
 	<< std::endl;
 }

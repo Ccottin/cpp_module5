@@ -6,13 +6,49 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:57:36 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/18 05:28:04 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/20 00:50:26 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include "Bureaucrat.hpp"
 #include "Intern.hpp"
+
+void	testunvalid(void)
+{
+	AForm	*unvalid;
+	Intern	WhatsHisNameAgain;
+	bool	alloc = false;
+	
+	try
+	{
+		unvalid = WhatsHisNameAgain.makeForm("unvalid name",
+			"Unvalid target");
+		alloc = true;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+		if (alloc)
+			delete unvalid;
+		return ;
+	}
+	try
+	{
+		Bureaucrat Jaques("Jaques", 6);
+		unvalid->beSigned(Jaques);
+		unvalid->execute(++Jaques);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	if (alloc)
+		delete unvalid;
+}
+	/* Of course, if return is deleted l.34, it will segfault */
+	/* if there's no trycatch, you can slide return right     */
+	/* after if (!unvalid)     								  */
 
 void	testppf(void)
 {
@@ -25,9 +61,9 @@ void	testppf(void)
 	{
 		ppf = OneMoreIntern.makeForm("presidential pardon", "YourLogin");
 		alloc = true;
-		Bureaucrat Jaques("Jaques", 5);
+		Bureaucrat Jaques("Jaques", 6);
 		ppf->beSigned(Jaques);
-		ppf->execute(Jaques);
+		ppf->execute(++Jaques);
 	}
 	catch (std::exception &e)
 	{
@@ -67,7 +103,7 @@ void	testscf(void)
 
 	try
 	{
-		scf = random.makeForm("shrubbery creation", "spacial void");
+		scf = random.makeForm("shrubbery creation", "spacialVoid");
 		alloc = true;
 		Bureaucrat Jean("Jean", 137);
 		scf->beSigned(Jean);
@@ -98,9 +134,7 @@ int	main(void)
 			std::cout << e.what() << std::endl;
 		}
 		if (success)
-		{
 			delete rrf;
-		}
 	}
 	std::cout << std::endl;
 	std::cout << std::endl;
@@ -111,5 +145,8 @@ int	main(void)
 	std::cout << std::endl;
 	std::cout << std::endl;
 	testppf();
+	std::cout << std::endl;
+	std::cout << std::endl;
+	testunvalid();
 	return (0);
 }

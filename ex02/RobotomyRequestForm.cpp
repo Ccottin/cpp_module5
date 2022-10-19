@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 05:53:48 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/18 00:22:02 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 21:59:26 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) :
 
 RobotomyRequestForm::
 RobotomyRequestForm(RobotomyRequestForm const &ref) :
-	AForm(ref.getName(), ref.getTarget(), false, 72, 45)
+	AForm(ref.getName(), ref.getTarget(),  ref.getForm(), 72, 45)
 {
 	std::cout << "RobotomyRequestForm " << ref.getName()
 	<< " created with a photocopier" << std::endl;
-	*this = ref;
 }
 
 RobotomyRequestForm

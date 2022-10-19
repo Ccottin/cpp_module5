@@ -6,7 +6,7 @@
 /*   By: ccottin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:58:33 by ccottin           #+#    #+#             */
-/*   Updated: 2022/10/19 04:05:59 by ccottin          ###   ########.fr       */
+/*   Updated: 2022/10/19 22:05:08 by ccottin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Bureaucrat::Bureaucrat(std::string const name, int const grade)
 	"for him" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &ref)
+Bureaucrat::Bureaucrat(Bureaucrat const &ref) : _name(ref.getName())
 {
 	*this = ref;
 	std::cout << "Bureaucrat " << _name << " got a copy of"
